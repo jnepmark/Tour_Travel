@@ -44,6 +44,11 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
                 placeholder="Number of Persons"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
               />
+              <input
+                type="text"
+                placeholder="Destinations "
+                className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
+              />
               <div className="flex justify-center">
                 <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full ">
                   Book Now

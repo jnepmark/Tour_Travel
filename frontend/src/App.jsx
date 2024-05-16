@@ -10,11 +10,13 @@ import PlacesRoute from "./pages/PlacesRoute";
 import PlacesByDestination from "./components/Blogs/PlacesByDestination";
 import BlogsComp from "./components/Blogs/BlogsComp";
 import BookingForm from "./components/Places/Bookingform";
+import FilterByLocation from "./components/Places/FilterByLocation";
 import Signup 	from './components/Signup';
 import Signin 	from './components/Signin';
 // Import AOS and its styles
 import AOS from "aos"; 
  import "aos/dist/aos.css";
+
 
 
 
@@ -43,6 +45,7 @@ const App = () => {
            <Route path="/blogs/:destination" element={<PlacesByDestination />} />
            <Route path="best-places" element={<PlacesRoute />} />
            <Route path="/booking-form" element={<BookingForm />} />
+           <Route path="/filter/:location" component={FilterByLocation} />
            	{/* <Route path ="signup"element={<Signup/>} /> */}
            	{/* <Route path ="signin"element={<Signin/>} /> */}
             	<Route path="about" element={<About />} />
