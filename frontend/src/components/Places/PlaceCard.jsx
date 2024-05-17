@@ -30,6 +30,11 @@ return (
                <IoLocationSharp />
                <span>{location}</span>
             </div>
+            {price && (
+            <>
+              <p>Price: ${price}</p>
+            </>
+          )}
             <p className="line-clamp-2">{description}</p>            
              {/* BOOK NOW Button */}
              {/* Updated button style */}

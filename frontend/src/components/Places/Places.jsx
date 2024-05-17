@@ -1,4 +1,6 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
+import FilterByLocation from "./FilterByLocation"; // Import your FilterByLocation
 import PlaceCard from "./PlaceCard";
 import Img1 from "../../assets/places/Malindi.jpg";
 import Img2 from "../../assets/places/masaimara.jpg";
@@ -6,6 +8,9 @@ import Img3 from "../../assets/places/water.jpg";
 import Img4 from "../../assets/places/place4.jpg";
 import Img5 from "../../assets/places/place5.jpg";
 import Img6 from "../../assets/places/place6.jpg";
+import Img7 from "../../assets/places/Africa.jpg";
+import Img8 from "../../assets/places/Girrafe.jpg";
+import Img9 from "../../assets/places/dubaicity.jpg";
 
 const PlacesData = [
   {
@@ -61,15 +66,15 @@ const PlacesData = [
     type: "Cultural Relax",
   },
   {
-    img: Img1,
-    title: "Beach",
+    img: Img7,
+    title: "Tsavo",
     location: "AFRICA",
     description: "Malindi is a popular tourist attraction destination .This wonderful coastal destination is located 120 km north east of the town of Mombasa with so much exciting things to do. Starting from the historical ruins to the National Parks.Established in the 14th century and was also served as a sanctuary to Vasco da Gama during 1498. The popular Vasco da Gama pillar and church was erected by the Portuguese explorer and is testimony to the fact of the friendship of the local people of Malindi with him.",
     price: 6700,
-    type: "Cultural Relax",
+    type: "Nature Drive",
   },
   {
-    img: Img2,
+    img: Img8,
     title: "Masai mara",
     location: "AFRICA",
     description:
@@ -78,7 +83,7 @@ const PlacesData = [
     type: "Game Drive",
   },
   {
-    img: Img3,
+    img: Img9,
     title: "Underwater",
     location: "ASIA",
     description:
@@ -90,22 +95,34 @@ const PlacesData = [
 ];
 
 const Places = ({ handleOrderPopup }) => {
+  const location = useLocation();
   return (
     <>
       <div className="dark:bg-gray-900 dark:text-white bg-gray-50 py-10">
         <section data-aos="fade-up" className="container ">
-          <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">
-            Hot Deals & Great Offers
-          </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {PlacesData.map((item, index) => (
-              <PlaceCard
-                handleOrderPopup={handleOrderPopup}
-                key={index}
-                {...item}
-              />
-            ))}
-          </div>
+          {/* Check if there's a selected destination */}
+          {location.state && location.state.title ? (
+            <FilterByLocation
+              locations={PlacesData} // Pass all places data
+            />
+          ) : (
+            <>
+              <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">
+                Hot Deals & Great Offers
+              </h1>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-
+              
+4">
+                {PlacesData.map((item, index) => (
+                  <PlaceCard
+                    handleOrderPopup={handleOrderPopup}
+                    key={index}
+                    {...item}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </section>
       </div>
     </>
